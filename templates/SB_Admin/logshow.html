@@ -1,0 +1,267 @@
+$def with (allhead, navbar)
+$ filepath = 'static'
+
+<html lang="en">
+  $:allhead
+  <body>
+    <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index">Support System</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li><a href="index"><i class="fa fa-dashboard"></i> 访问信息</a></li>
+            <li><a href="charts"><i class="fa fa-bar-chart-o"></i> 系统监控</a></li>
+            <li><a href="forms"><i class="fa fa-edit"></i> 架构拓扑</a></li>
+            <li><a href="tables"><i class="fa fa-table"></i> url监控</a></li>
+            <li><a href="up"><i class="fa fa-arrows-h"></i> 代码更新</a></li>
+            <li class="active"><a href="logshow"><i class="fa fa-file"></i> 日志检阅</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> 权限管理 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Dropdown Item</a></li>
+                <li><a href="#">Another Item</a></li>
+                <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>
+              </ul>
+            </li>
+          </ul>
+          $:navbar
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>日志检阅</h1>
+            <ol class="breadcrumb">
+              <li><a href="index"><i class="icon-dashboard"></i> 访问信息</a></li>
+              <li class="active"><i class="icon-file-alt"></i>日志检阅&nbsp&nbsp&nbsp</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-lg-12">
+             <div class="input-group">
+              <input type="text" class="form-control" placeholder="输入日志接收邮箱" id="email">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" id="maillog" onclick="getmaillog()">开始接收</button>
+              </span><span></span>
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" id="logbtn" onclick="logbtn()">获取日志</button>
+              </span><span></span>
+            </div><!-- /input-group -->
+          </div>
+        </div>
+        <div class="row">
+          <p></p>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="bs-example">
+              <ul class="nav nav-justified" style="margin-bottom: 15px;">
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    掌上心电日志 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_m1')">
+                        Err-201<span class="badge navbar-right" style="color:indianred" id="web_m1">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_b1')">
+                        Err-202<span class="badge navbar-right" style="color:indianred" id="web_b1">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_s1')">
+                        Err-203<span class="badge navbar-right" style="color:indianred" id="web_s1">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_m4')">
+                        Db-201<span class="badge navbar-right" style="color:indianred" id="web_m4">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_b4')">
+                        Db-202<span class="badge navbar-right" style="color:indianred" id="web_b4">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_s4')">
+                        Db-203<span class="badge navbar-right" style="color:indianred" id="web_s4">2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    运动版日志 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_m2')">
+                        Err-201<span class="badge navbar-right" style="color:indianred" id="web_m2">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item " onclick="logget('logcont','web_b2')">
+                        Err-202<span class="badge navbar-right" style="color:indianred" id="web_b2">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_s2')">
+                        Err-203<span class="badge navbar-right" style="color:indianred" id="web_s2">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_m5')">
+                        Db-201<span class="badge navbar-right" style="color:indianred" id="web_m5">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_b5')">
+                        Db-202<span class="badge navbar-right" style="color:indianred" id="web_b5">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_s5')">
+                        Db-203<span class="badge navbar-right" style="color:indianred" id="web_s5">2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    医生端日志 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_m3')">
+                        Err-201<span class="badge navbar-right" style="color:indianred" id="web_m3">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item " onclick="logget('logcont','web_b3')">
+                        Err-202<span class="badge navbar-right" style="color:indianred" id="web_b3">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_s3')">
+                        Err-203<span class="badge navbar-right" style="color:indianred" id="web_s3">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_m6')">
+                        Db-201<span class="badge navbar-right" style="color:indianred" id="web_m6">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_b6')">
+                        Db-202<span class="badge navbar-right" style="color:indianred" id="web_b6">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item" onclick="logget('logcont','web_s6')">
+                        Db-203<span class="badge navbar-right" style="color:indianred" id="web_s6">2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    web管理端日志 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_s7')">
+                        Err-203<span class="badge navbar-right" style="color:indianred" id="web_s7">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#logcont" data-toggle="tab" class="list-group-item nav-justified" onclick="logget('logcont','web_s8')">
+                        Db-203<span class="badge navbar-right" style="color:indianred" id="web_s8">2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    数据库日志 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item nav-justified">
+                        Err-206<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item ">
+                        Err-207<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item nav-justified">
+                        Err-208<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item nav-justified">
+                        Err-209<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item nav-justified">
+                        DB-202<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dropdown1" data-toggle="tab" class="list-group-item nav-justified">
+                        DB-203<span class="badge navbar-right" style="color:indianred">2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                  <div class="col-lg-12">
+                  <pre style="text-align:center;"><h5><br><br><br>======== 日志检阅 ========<br><br></h5>
+                    <h5 class="test-success" style="text-align:center;" id="frame">实时日志，点击“获取日志”</h5><br><br><br><br><br><br></pre>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="logcont">
+                  <pre>...</pre>
+                </div>
+                <div class="tab-pane fade" id="dropdown1">
+                  <p>...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!--row-->
+      </div><!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+    <script src="$filepath/js/jquery-1.10.2.js"></script>
+    <script src="$filepath/js/bootstrap.js"></script>
+    <script src="$filepath/js/mine/logdeal.js"></script>
+
+  </body>
+</html>

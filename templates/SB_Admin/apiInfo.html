@@ -1,0 +1,43 @@
+$def with (smallname, h3name, numlist) 
+
+<div class="copyrights">Collect from</div>
+  <div id="page-wrapper">
+    <div class="row">
+    </div>
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <!--h3 class="panel-title"><i class="fa fa-money"></i> Ecg/SDK历史访问的api总排行</h3-->
+            <h3 class="panel-title"><i class="fa fa-money"></i> $h3name</h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped tablesorter">
+                <thead>
+                  <tr>
+                  	<th>序号 </th>
+                    <th>访问的api </th>
+                    <th>api注释 </th>
+                    <th>访问量次 </th>
+                    <th>访问占比 </th>
+                  </tr>
+                </thead>
+                <tbody>
+                	$ n  = 0
+
+					$for item in numlist:
+						$ oneList = item.split("=")
+						<tr>
+						$ n += 1
+						<td>$n</td>
+						$for one in oneList:
+							<td>$one</td>
+						</tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div><!-- /.row -->
+
+  </div><!-- /#page-wrapper -->
