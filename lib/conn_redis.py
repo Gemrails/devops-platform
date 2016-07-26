@@ -119,6 +119,15 @@ class CRedis(object):
     def iexist(self, key):
         return self.r.exists(key)
 
+    def eexpire(self, key, time):
+        '''
+        设置key的过期时间默认为1天,这个设定针对本次的salt-api使用
+        :param key:
+        :param time:
+        :return:
+        '''
+        return self.r.expire(key, time=86400)
+
 if __name__ == '__main__':
 
     r = CRedis()
