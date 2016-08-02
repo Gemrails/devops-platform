@@ -2,7 +2,6 @@
 #coding=utf-8
 
 import json
-import urllib
 import urllib2
 import ssl
 from conn_redis import CRedis
@@ -128,8 +127,8 @@ class GetToken(object):
     def _runsls(self, _token, client, tgt, slsfile, testsign=False):
 
         testarg = "test=%s" % testsign
-        __rpdata = [{"client":client, "fun":"state.sls", "arg":slsfile}]
-        header = {"Accept":"application/json", "X-Auth-Token":_token}
+        __rpdata = [{"client":client, "tgt":tgt, "fun":"state.sls", "arg":slsfile}]
+        header = {"Content-Type":"application/json", "Accept":"application/json", "X-Auth-Token":_token}
         response = self.__response(self.url, __rpdata, header)
         html = json.loads(response.read())
         response.close()
